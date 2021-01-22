@@ -1,4 +1,5 @@
-import '../scss/main.scss';
+import { StickyProfileGuideAnimations } from "./animations";
+import { Users } from "./users";
 
-const message: string = "hello";
-console.log(message);
+window.addEventListener("scroll", () => { StickyProfileGuideAnimations(); });
+
