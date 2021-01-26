@@ -1,6 +1,6 @@
-import { StickyProfileGuideAnimations } from "./animations";
-import { Users } from "./users";
+import { UpdateHTML } from "./updateHTML";
 
-window.addEventListener("scroll", () => { StickyProfileGuideAnimations(); });
-const xyz = Users.initUsers();
-console.log(xyz[0]);
+UpdateHTML.showUsers();
+
+
+
