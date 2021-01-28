@@ -1,4 +1,3 @@
-import { UpdateHTML } from "./updateHTML";
 interface UserData {
     id: number;
     name: string;
@@ -43,8 +42,9 @@ export class Users implements UserData {
     ) {}
 
     static async initUsers(): Promise<Users[]> {
+        let config = 'https://jsonplaceholder.typicode.com/users';
         const fetchUsers = async(): Promise<UserData[]> => {
-            const response = await fetch('https://jsonplaceholder.typicode.com/users');
+            const response = await fetch(config);
             const json = await response.json();
             return JSON.parse(JSON.stringify(json));
         }
@@ -57,6 +57,18 @@ export class Users implements UserData {
         return newUsers;
     }
 
+    static async initUser(id: string): Promise<Users> {
+        let config:string = 'https://jsonplaceholder.typicode.com/users/';
+        const userID:string = String(id);
+        config += userID;
 
+        const fetchUser = async(): Promise<Users> => {
+            const response = await fetch(config);
+            const json = await response.json();
+            return JSON.parse(JSON.stringify(json));
+        }
+
+        return await fetchUser();   
+    }
     
 }
