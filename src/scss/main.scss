@@ -71,6 +71,10 @@
             color: $secondary-fcolor;
             li {
                 padding: 1rem;
+                a {
+                    color: $secondary-fcolor;
+                    text-decoration: none;
+                }
             }
             &--stuck {
                 border-top: none;
