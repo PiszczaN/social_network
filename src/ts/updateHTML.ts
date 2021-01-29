@@ -62,7 +62,20 @@ export class UpdateHTML {
     static async completeUserAlbums(id: string) {
         UpdateHTML.completeUserHeader(id);
         const albums = await Albums.initAlbums(id);
-
+        const albumsWraper = document.querySelector(".albums__wraper");
+        let albumIterator = 1;
+        albums.forEach(element => {
+            
+            albumsWraper.innerHTML += `
+                <div class="albums__album">
+                    <h2>Album ${albumIterator}</h2>
+                    <p>${element.title}</p>
+                </div>
+            `;
+            albumIterator++;
+        });
+        albumIterator = 1;
+        
     }
 
     static async completeUserInformations(id: string) {

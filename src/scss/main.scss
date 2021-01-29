@@ -108,3 +108,33 @@
             }
         }
     }
+    
+    .albums {
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &__wraper {
+            display: flex;
+            padding: 3.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &__album {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 15rem;
+            height: 15rem;
+            border: solid 0.1rem $border-color;
+            background-color: $secondary-color;
+            text-align: center;
+            padding: 1rem;
+            margin: 1rem;
+            h2 {
+                margin: 0;
+            }
+        }
+    }
