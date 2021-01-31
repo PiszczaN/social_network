@@ -2,6 +2,7 @@ import { Posts } from "./posts";
 import { Users } from "./users";
 import { StickyProfileGuideAnimations } from "./animations";
 import { Albums } from "./albums";
+import { Photos } from "./photos";
 
 export class UpdateHTML {
     static async showUsers() {
@@ -30,7 +31,7 @@ export class UpdateHTML {
 
         guideList.innerHTML = `
             <li><a href="userProfile.html?location=posts&id=${id}">tablica</a></li>
-            <li><a href="userPhotos.html?location=photos&id=${id}">zdjęcia</a></li>
+            <li><a href="userAlbums.html?location=albums&id=${id}">zdjęcia</a></li>
             <li><a href="userInformations.html?location=informations&id=${id}">informacje</a></li>
         `;
     }
@@ -67,10 +68,10 @@ export class UpdateHTML {
         albums.forEach(element => {
             
             albumsWraper.innerHTML += `
-                <div class="albums__album">
+                <a href="userPhotos.html?location=photos&id=${id}&albumId=${element.id}" class="albums__album">
                     <h2>Album ${albumIterator}</h2>
                     <p>${element.title}</p>
-                </div>
+                </a>
             `;
             albumIterator++;
         });
@@ -78,10 +79,72 @@ export class UpdateHTML {
         
     }
 
+    static async completeUserPhotos(id: string, albumId: string) {
+        UpdateHTML.completeUserHeader(id);
+        const photos = await Photos.initPhotos(albumId);
+        const albumsWraper = document.querySelector(".albums__wraper");
+
+        photos.forEach(element => {
+            albumsWraper.innerHTML += `
+                <img src="${element.thumbnailUrl}" />
+            `;
+        });
+    }
+
     static async completeUserInformations(id: string) {
         UpdateHTML.completeUserHeader(id);
         const user = await Users.initUser(id);
+        const infoWraper = document.querySelector(".informations__wraper");
+
         
+            infoWraper.innerHTML = `
+                <h1>BIO</h1>
+                <div class="informations__info">
+                    <p>username:
+                        <h2>${user.username}</h2>
+                    </p>
+                </div>
+                <div class="informations__info">
+                    <p>name:
+                        <h2>${user.name}</h2>
+                    </p>
+                </div>
+                <div class="informations__info">
+                    <p>company:
+                        <h2>${user.company.name}</h2>
+                    </p>
+                </div>
+                <div class="informations__info">
+                    <p>website:
+                        <h2>${user.website}</h2>
+                    </p>
+                </div>
+                <h1>Contact</h1>
+                <div class="informations__info">
+                    <p>email:
+                        <h2>${user.email}</h2>
+                    </p>
+                </div>
+                <div class="informations__info">
+                    <p>phone:
+                        <h2>${user.phone}</h2>
+                    </p>
+                </div>
+                
+                <h1>Address</h1>
+
+                <div class="informations__info">
+                    <p>city:
+                        <h2>${user.address.city}</h2>
+                    </p>
+                </div>
+                <div class="informations__info">
+                    <p>street:
+                        <h2>${user.address.street}</h2>
+                    </p>
+                </div>
+            `;
+      
     }
 
 }
