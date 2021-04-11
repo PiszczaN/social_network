@@ -3,6 +3,7 @@ export const StickyProfileGuideAnimations = () => {
     const guideList = document.querySelector(".guide__list");
     const elementTopEdge = guide.getBoundingClientRect().top;
     
+    
     if(elementTopEdge === 56) {
         guideList.classList.add("guide__list--stuck");
     }else {

@@ -1,0 +1,54 @@
+.accountsBaner {
+    width: 100%;
+    background-color: $secondary-color;
+    &__title {
+        display: flex;
+        justify-content: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5rem;
+    }
+}
+
+.accountsList {
+    margin: 1.5rem;
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__wraper {
+        background-color: $secondary-color;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+    &__account {
+        min-height: 5rem;
+        color: white;
+        text-decoration: none;
+        background-color: $primary-color;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        border: solid 1px $border-color;
+        margin: 0rem 0rem 1.5rem 0rem;
+        overflow: hidden;
+        .account__username {
+            font-weight: 700;
+            font-size: 150%;
+            border-right: solid 0.2rem $border-color;
+            padding: 0rem 1.5rem 0rem 0rem;
+        }
+        .account__info {
+            padding: 0rem 1.5rem 0rem 1.5rem;
+            border-left: solid 0.2rem $border-color;
+            color: $secondary-fcolor;
+        }
+        .account__info:nth-child(2) {
+            border: none;
+        }
+    }
+    &__account:last-child {
+        margin: 0rem 0rem 0rem 0rem;
+    }
+}

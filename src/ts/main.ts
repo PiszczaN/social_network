@@ -1,5 +1,6 @@
-import { StickyProfileGuideAnimations } from "./animations";
-import { Users } from "./users";
+import { UpdateHTML } from "./updateHTML";
 
-window.addEventListener("scroll", () => { StickyProfileGuideAnimations(); });
+UpdateHTML.showUsers();
+
+
 
